@@ -1,5 +1,5 @@
 const navdropdownBtn = document.getElementById("navdropdownBtn");
-let isClassAddedInNavDropdown = false;
+let isClassAddedInNavDropdown = true;
 
 navdropdownBtn.addEventListener("click", () => {
 
