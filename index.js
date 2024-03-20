@@ -2,7 +2,9 @@ import express from "express";
 import connectDB from "./service/connectDB.js";
 import path from "path";
 import UserRouter from "./routes/user.js";
+import BlogRouter from "./routes/blog.js"
 import cookieParser from "cookie-parser";
+import BlogModel from "./models/blog.js"
 import { checkForAuthenticationCookies } from "./middlewares/authentication.js";
 const app = express();
 const PORT = 8000;
@@ -21,10 +23,13 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(checkForAuthenticationCookies("uuid"));
 
-app.use("/", UserRouter)
-app.get('/', (req, res) => {
+app.use("/", UserRouter);
+app.use("/", BlogRouter);
+app.get('/', async(req, res) => {
+    const allBlogs = await BlogModel.find({createdBy : req.user._id});
     res.render('index', {
-        user : req.user
+        user : req.user,
+        blogs : allBlogs
     }); 
 });
 
