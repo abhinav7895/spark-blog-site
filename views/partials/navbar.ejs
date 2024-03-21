@@ -1,49 +1,54 @@
-<nav class="w-screen bg-slate-900 h-20">
-    <div class="container mx-auto h-full flex justify-between items-center">
-        <div class="text-3xl font-semibold text-green-600 flex animate-pulse">
-            <a href="/">Spark</a>
+<nav class="w-screen bg-black h-[70px] border border-[#27272a] fixed top-0 rounded-b-lg z-9999 left-0 right-0">
+    <div class="container bg-black px-5 mx-auto h-full flex justify-between items-center">
+        <div class="text-3xl font-semibold text-white flex ">
+            <a href="/" class="flex items-center gap-1">
+                <img  class="w-7 -mb-[6px]" src="assets/darkfavicon.svg" alt="" >
+                <span>spark</span></a>
         </div>
 
         <div class="hidden md:block">
-            <ul class="flex items-center gap-4 text-white *:text-xl *:border *:p-2 *:rounded-md *:border-gray-200">
-                <li class="hover:bg-blue-400 transition-all delay-100"><a href="/">Home</a></li>
+            <ul class="flex items-center gap-4 text-white *:text-base ">
+                <li class="text-base hover:text-blue-500 "><a href="/">Home</a></li>
                 <% if(locals.user) { %>
-                <li class="hover:bg-blue-400 transition-all delay-100"><a href="/add-blog">Add Blog</a></li>
+                <li class="hover:text-blue-500"><a href="/add-blog">Add Blog</a></li>
                 <% } %>
                 <% if(locals.user) { %>
-                    <li class="hover:bg-blue-400 transition-all delay-100  ">
-                        <a href="/edit-profile" class="flex items-center gap-1">
+                    <li class=" ">
+                        <a href="/edit-profile" class="flex items-center gap-1 border px-2 py-1 rounded-full hover:bg-slate-900 border-[#27272a]">
                         <img class="rounded-full size-6" src="/assets/useravatar.png" alt="profilephoto"><span class=" line-clamp-1">
                             <%= user?.fullName %>
                         </a>
                     </span></li>
                 <% } %>
                 <% if(!locals.user) { %>
-                    <li class="hover:bg-blue-400 transition-all delay-100"><a href="/signin">Login</a></li>
+                    <li class="hover:bg-slate-900 rounded-full px-2 py-1"><a href="/signin">Sign in</a></li>
                 <% } %>
                 <% if(locals.user) { %>
-                    <li class="hover:bg-blue-400 transition-all delay-100"><a href="/signout">Logout</a></li>
+                    <li class="bg-white rounded-full px-2 py-1 text-black"><a href="/signout">Logout</a></li>
                 <% } %>
             </ul>
         </div>
 
         <div class="md:hidden relative">
             <button id="navdropdownBtn" class="cursor-pointer" aria-pressed="false"><img width="35" src="/assets/hamburger.svg" alt=""></button>
-            <ul id="dropdownLinks" class=" flex-col bg-slate-900 min-w-[180px] items-center gap-4 hidden text-white *:text-xl  *:p-2 *:rounded-md *:border-gray-200 *:w-full p-3 absolute top-14 right-0 rounded-xl">
+            <ul id="dropdownLinks" class=" flex-col bg-black min-w-[180px] items-center space-y-4 hidden text-white   *:rounded-md  *:w-full p-3 absolute top-16 border justify-start  border-[#27272a] right-0 rounded-xl *:text-base">
+                <li class="text-base hover:text-blue-500 "><a href="/">Home</a></li>
                 <% if(locals.user) { %>
-                    <li class="hover:bg-blue-400 transition-all delay-100 flex items-center gap-1 "><img class="rounded-full size-10" src="/assets/useravatar.png" alt="profilephoto"><span class=" line-clamp-1">
-                        <%= user?.fullName %>
+                <li class="hover:text-blue-500"><a href="/add-blog">Add Blog</a></li>
+                <% } %>
+                <% if(locals.user) { %>
+                    <li class=" ">
+                        <a href="/edit-profile" class="flex items-center gap-1 border px-2 py-1 rounded-full hover:bg-slate-900 border-[#27272a]">
+                        <img class="rounded-full size-6" src="/assets/useravatar.png" alt="profilephoto"><span class=" line-clamp-1">
+                            <%= user?.fullName %>
+                        </a>
                     </span></li>
                 <% } %>
-                <li class="hover:bg-blue-400 transition-all delay-100"><a  href="/">Home</a></li>
-                <% if(locals.user) { %>
-                    <li class="hover:bg-blue-400 transition-all delay-100"><a href="/add-blog">Add Blog</a></li>
-                    <% } %>
                 <% if(!locals.user) { %>
-                    <li class="hover:bg-blue-400 transition-all delay-100"><a href="/signin">Login</a></li>
+                    <li ><a class="hover:bg-slate-900 rounded-full px-2 py-1" href="/signin">Sign in</a></li>
                 <% } %>
                 <% if(locals.user) { %>
-                    <li class="hover:bg-blue-400 transition-all delay-100"><a href="/signout">Logout</a></li>
+                    <li class=""><a class="bg-white rounded-full px-2 py-1 text-black" href="/signout">Logout</a></li>
                 <% } %>
             </ul>
         </div>

@@ -26,9 +26,9 @@ app.use(checkForAuthenticationCookies("uuid"));
 app.use("/", UserRouter);
 app.use("/", BlogRouter);
 app.get('/', async(req, res) => {
-    const allBlogs = await BlogModel.find({createdBy : req.user._id});
+    const allBlogs = await BlogModel.find({createdBy : req?.user?._id});
     res.render('index', {
-        user : req.user,
+        user : req?.user,
         blogs : allBlogs
     }); 
 });
