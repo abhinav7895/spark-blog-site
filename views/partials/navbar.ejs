@@ -2,7 +2,7 @@
     <div class="container bg-black px-5 mx-auto h-full flex justify-between items-center">
         <div class="text-3xl font-semibold text-white flex ">
             <a href="/" class="flex items-center gap-1">
-                <img  class="w-7 -mb-[6px]" src="assets/darkfavicon.svg" alt="" >
+                <img  class="w-7 animate-spin -mb-[6px]" src="assets/darkfavicon.svg" alt="" >
                 <span>spark</span></a>
         </div>
 
@@ -14,7 +14,7 @@
                 <% } %>
                 <% if(locals.user) { %>
                     <li class=" ">
-                        <a href="/edit-profile" class="flex items-center gap-1 border px-2 py-1 rounded-full hover:bg-slate-900 border-[#27272a]">
+                        <a href="/" class="flex items-center gap-1 border px-2 py-1 rounded-full hover:bg-slate-900 border-[#27272a]">
                         <img class="rounded-full size-6" src="/assets/useravatar.png" alt="profilephoto"><span class=" line-clamp-1">
                             <%= user?.fullName %>
                         </a>
@@ -38,7 +38,7 @@
                 <% } %>
                 <% if(locals.user) { %>
                     <li class=" ">
-                        <a href="/edit-profile" class="flex items-center gap-1 border px-2 py-1 rounded-full hover:bg-slate-900 border-[#27272a]">
+                        <a href="/" class="flex items-center gap-1 border px-2 py-1 rounded-full hover:bg-slate-900 border-[#27272a]">
                         <img class="rounded-full size-6" src="/assets/useravatar.png" alt="profilephoto"><span class=" line-clamp-1">
                             <%= user?.fullName %>
                         </a>
