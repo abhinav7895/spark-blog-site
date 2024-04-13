@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import express from "express";
 import connectDB from "./service/connectDB.js";
 import path from "path";
@@ -7,11 +8,9 @@ import cookieParser from "cookie-parser";
 import BlogModel from "./models/blog.js"
 import { checkForAuthenticationCookies } from "./middlewares/authentication.js";
 const app = express();
-const PORT = 8000;
-
 
 // mongoDB connection
-connectDB()
+connectDB(`${process.env.MongoDBURL}${process.env.DB_NAME}`)
  .then(() => console.log("MongoDB connected"))
  .catch((e) => console.error(e));
 
@@ -22,9 +21,9 @@ app.use(express.urlencoded({extended : true}));
 app.use(express.json());
 app.use(cookieParser());
 app.use(checkForAuthenticationCookies("uuid"));
-
 app.use("/", UserRouter);
 app.use("/", BlogRouter);
+
 app.get('/', async(req, res) => {
     const allBlogs = await BlogModel.find({createdBy : req?.user?._id});
     res.render('index', {
@@ -33,4 +32,4 @@ app.get('/', async(req, res) => {
     }); 
 });
 
-app.listen(PORT, () => console.log(`Server running at port ${PORT}`));
+app.listen(process.env.PORT || 8000, () => console.log(`Server running at port ${process.env.PORT || 8000}`));

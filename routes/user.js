@@ -29,8 +29,14 @@ router.post("/signin", async (req, res) => {
 });
 
 router.post("/signup", async (req, res) => {
+    console.log("hello");
     try {
         const { fullName, email, password } = req.body;
+        const user = await User.findOne({email : email});
+        console.log(user);
+        if (user) {
+            return res.render("signup", {error : "Email already exist!"});
+        }
         await User.create({ fullName, email, password });
         return res.redirect("/signin");
     } catch (error) {
